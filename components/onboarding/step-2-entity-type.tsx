@@ -22,12 +22,12 @@ const ENTITY_OPTIONS = [
     subtitle: "Limited Liability Company",
     pros: ["Ideal para freelancers, consultores y pequeños negocios", "Estructura flexible y simple de mantener", "Los beneficios o pérdidas pasan directamente a los dueños (no paga impuesto corporativo)", "Recomendable si buscás simplicidad y protección personal"],
   },
-  {
-    value: "C_CORP" as const,
-    title: "C Corp",
-    subtitle: "C Corporation",
-    pros: ["Ideal para startups con inversores o planes de crecer a gran escala", "Permite emitir acciones y atraer capital de inversión", "Requiere reportes y mayor formalidad administrativa", "Recomendable si pensás reinvertir utilidades y expandir tu negocio"],
-  },
+  // {
+  //   value: "C_CORP" as const,
+  //   title: "C Corp",
+  //   subtitle: "C Corporation",
+  //   pros: ["Ideal para startups con inversores o planes de crecer a gran escala", "Permite emitir acciones y atraer capital de inversión", "Requiere reportes y mayor formalidad administrativa", "Recomendable si pensás reinvertir utilidades y expandir tu negocio"],
+  // },
 ]
 
 export function Step2EntityType({ onNext }: Step2EntityTypeProps) {

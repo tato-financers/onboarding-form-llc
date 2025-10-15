@@ -59,6 +59,7 @@ const tipoEstado = data.step4?.state ?? ""
 
   const payload = {
     properties: {
+      name: `${data.step2?.entityType} | ${data.step1?.firstName} ${data.step1?.lastName} ` ,
       tipo_de_compania_en_usa_test: data.step2?.entityType || "",
       tipo_de_sociedad_de_la_compania_americana: sociedadMap[tipoSociedad ]|| "",
       estado_de_la_compania_americana: estadoMap[tipoEstado] || "",
