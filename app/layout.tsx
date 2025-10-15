@@ -25,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" type="image/svg+xml" href="Favicon.svg" />
         {ENABLE_GTM && (
           <script
             dangerouslySetInnerHTML={{
