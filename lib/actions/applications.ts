@@ -139,12 +139,14 @@ export async function saveApplication(data: OnboardingData, applicationId?: stri
   const companyResult = await createCompanyInHubspot(data)
   if (!companyResult.success) {
     console.warn("[HubSpot] Falló la creación de empresa:", companyResult.error)
+    console.log("empresa creada")
   }
 
   // 2. Crear contacto en HubSpot
   const hubspotResult = await sendToHubspot(data)
   if (!hubspotResult.success) {
     console.warn("[HubSpot] Falló el envío de contacto:", hubspotResult.error)
+    console.log("contacto creado")
   }
 
   // 3. Asociarlas
