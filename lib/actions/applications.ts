@@ -70,7 +70,7 @@ export async function saveApplication(data: OnboardingData, applicationId?: stri
 
     let finalApplicationId: string | null = null
 
-    // Caso 1: actualizar por applicationId
+    // Update by applicationId
     if (applicationId) {
       const { data: updatedData, error } = await supabase
         .from("applications")
@@ -87,19 +87,24 @@ export async function saveApplication(data: OnboardingData, applicationId?: stri
       console.log("[v0] Application updated successfully:", updatedData.id)
       finalApplicationId = updatedData.id
     } else {
-      // Caso 2: actualizar lead existente
+
+      // Find if a lead with this email address and 'lead' status already exists.
+      // maybeSingle() returns null if there are no results, without throwing an error.
       const { data: existingLead, error: leadError } = await supabase
         .from("applications")
         .select("id")
         .eq("email", data.step1.email)
         .eq("status", "lead")
         .maybeSingle()
-
+      
+      
+      // If there was an actual error in the query (not "no results")  
       if (leadError) {
         console.error("[v0] Error checking for existing lead:", leadError)
         return { success: false, error: leadError.message }
       }
-
+   
+      // If it exists, update the existing record
       if (existingLead) {
         const { data: updatedData, error } = await supabase
           .from("applications")
@@ -116,7 +121,7 @@ export async function saveApplication(data: OnboardingData, applicationId?: stri
         console.log("[v0] Lead updated to completed application:", updatedData.id)
         finalApplicationId = updatedData.id
       } else {
-        // Caso 3: crear nueva aplicación
+        // If it doesn't exist, create a new application
         const { data: newData, error } = await supabase
           .from("applications")
           .insert(applicationData)

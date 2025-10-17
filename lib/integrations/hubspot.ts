@@ -43,26 +43,26 @@ export async function sendToHubspot(data: OnboardingData) {
 
 export async function createCompanyInHubspot(data: OnboardingData) {
 
-const sociedadMap : Record<string, string> = {
+const membershipTypeMap : Record<string, string> = {
   SINGLE: "Single Member",
   MULTI: "Multi Member",
 }
 
-const estadoMap: Record<string, string> = {
+const stateMap: Record<string, string> = {
   WY: "Wyoming",
   NM: "New Mexico",
   FL: "Florida",
   DE: "Dellaware",
 }
-const tipoSociedad = data.step3?.membershipType ?? ""
-const tipoEstado = data.step4?.state ?? ""
+const membership = data.step3?.membershipType ?? ""
+const stateType = data.step4?.state ?? ""
 
   const payload = {
     properties: {
       // name: `${data.step2?.entityType} | ${data.step1?.firstName} ${data.step1?.lastName} ` ,
       tipo_de_compania_en_usa_test: data.step2?.entityType || "",
-      tipo_de_sociedad_de_la_compania_americana: sociedadMap[tipoSociedad ]|| "",
-      estado_de_la_compania_americana: estadoMap[tipoEstado] || "",
+      tipo_de_sociedad_de_la_compania_americana: membershipTypeMap[membership]|| "",
+      estado_de_la_compania_americana: stateMap[stateType] || "",
     },
   }
 
